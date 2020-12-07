@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.icq.model.dao.SurveyDAO;
-import com.icq.model.entities.MHOT14;
+import com.icq.model.entities.survey.MHOT14;
 
 @Path("/survey")
 public class SurveyRest {

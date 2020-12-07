@@ -1,4 +1,4 @@
-package com.icq.model.entities;
+package com.icq.model.entities.survey;
 
 import java.io.Serializable;
 
@@ -8,21 +8,17 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.icq.model.entities.Survey;
 
 
 @Entity
 @Table(name = "mhot14")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "name", "email", "fone", "p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8Boolean", "p8", "retired",
+@JsonPropertyOrder({"p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8Boolean", "p8", "retired",
 		"unemployed", "p9Boolean", "p9", "p10", "p11Boolean", "p11", "p12", "p13Boolean", "p13", "p14" })
 public class MHOT14 extends Survey implements Serializable {
 
-	@JsonProperty("name")
-	private String name;
-	@JsonProperty("email")
-	private String email;
-	@JsonProperty("fone")
-	private String fone;
+	
 	@JsonProperty("p1")
 	private long p1;
 	@JsonProperty("p2")
@@ -99,13 +95,10 @@ public class MHOT14 extends Survey implements Serializable {
 	 * @param unemployed
 	 * @param email
 	 */
-	public MHOT14(String name, String email, String fone, long p1, long p2, long p3, long p4, long p5, long p6, long p7,
+	public MHOT14(long p1, long p2, long p3, long p4, long p5, long p6, long p7,
 			String p8Boolean, long p8, String retired, String unemployed, String p9Boolean, long p9, long p10,
 			String p11Boolean, long p11, long p12, String p13Boolean, long p13, long p14) {
 		super();
-		this.name = name;
-		this.email = email;
-		this.fone = fone;
 		this.p1 = p1;
 		this.p2 = p2;
 		this.p3 = p3;
@@ -126,36 +119,6 @@ public class MHOT14 extends Survey implements Serializable {
 		this.p13Boolean = p13Boolean;
 		this.p13 = p13;
 		this.p14 = p14;
-	}
-
-	@JsonProperty("name")
-	public String getName() {
-		return name;
-	}
-
-	@JsonProperty("name")
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@JsonProperty("email")
-	public String getEmail() {
-		return email;
-	}
-
-	@JsonProperty("email")
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@JsonProperty("fone")
-	public String getFone() {
-		return fone;
-	}
-
-	@JsonProperty("fone")
-	public void setFone(String fone) {
-		this.fone = fone;
 	}
 
 	@JsonProperty("p1")

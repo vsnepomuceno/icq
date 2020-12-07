@@ -7,8 +7,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.TypedQuery;
 
 import com.icq.model.entities.Chart;
-import com.icq.model.entities.MHOT14;
 import com.icq.model.entities.charts.MHOT14Chart;
+import com.icq.model.entities.survey.MHOT14;
 
 @NamedQuery(name = "Mhot14Chart.findAll", query = "SELECT m FROM mhot14 m")
 public class ChartDAO extends DAO<Chart> {

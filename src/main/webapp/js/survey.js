@@ -112,22 +112,21 @@ var json = {
 			maxRateDescription : "Nenhuma Dor"
 		},
         {
-	        type: "radiogroup",
+			type: "checkbox",
 	        name: "p8Boolean",
 	        "title": "Quanto você se preocupa em mudanças rapidas de direção nos seus esportes ou atividades recreativas?",
-            "description": "Faço esse movimento em minhas atividades.",
-	        isRequired: true,
+	        isRequired: false,
 	        choices: [
-	            "Sim", "Não"
+	        	"Não faço esse movimento em minhas atividades."
 	        ],
 	        colCount: 0
         },
 		{
 			type : "rating",
 			name : "p8",
-			title : "Quanto você se preocupa em mudanças rapidas de direção nos seus esportes ou atividades recreativas?",
+			title : " ",
 			isRequired : false,
-			visibleIf: "{p8Boolean}='Sim'",
+			visibleIf: "{p8Boolean} empty",
 			rateMin : 1,
 			rateMax : 10,
 			minRateDescription : "Muito",
@@ -142,44 +141,43 @@ var json = {
 		"elements" : [
 			
 	        {
-		        type: "radiogroup",
+	        	type: "checkbox",
 		        name: "retired",
-		        "title": "Sou aposentado.",
-		        isRequired: true,
+		        "title": " ",
+		        isRequired: false,
 		        choices: [
-		            "Sim", "Não"
+		            "Sou aposentado."
 		        ],
 		        colCount: 0
 	        },
 	        {
-	        	type: "radiogroup",
+	        	type: "checkbox",
 	            "name": "unemployed",
-	            "title": "Não trabalho por razões diversas à condição do meu quadril.",
-	            visibleIf: "{retired}='Não'",
+	            "title": " ",
+	            visibleIf: "{retired} empty",
 	            "isRequired": false,
 	            choices: [
-	                "Sim", "Não"
+	                "Não trabalho por razões diversas à condição do meu quadril."
 	            ],
 		        colCount: 0
 	        },
 	        {
-	        	type: "radiogroup",
+	        	type: "checkbox",
 	            "name": "p9Boolean",
 	            "title": "Qual é sua dificuldade para empurrar, puxar, levantar ou carregar objetos pesados em seu trabalho?",
-	            "description": "Faço esse movimento em minhas atividades.",
-	            visibleIf: "{unemployed}='Não'",
+	            visibleIf: "{retired} empty and {unemployed} empty",
 	            "isRequired": false,
 	            choices: [
-	                "Sim", "Não"
+	            	"Não faço esse movimento em minhas atividades."
 	            ],
 		        colCount: 0
 	        },
 			{
 				type : "rating",
 				name : "p9",
-				title : "Qual é sua dificuldade para empurrar, puxar, levantar ou carregar objetos pesados em seu trabalho?",
+				title : " ",
 				isRequired : false,
-				visibleIf: "{p9Boolean}='Sim'",
+				visibleIf: "{retired} empty and {unemployed} empty and {p9Boolean} empty",
 				rateMin : 1,
 				rateMax : 10,
 				minRateDescription : "Muita dificuldade",
@@ -190,7 +188,7 @@ var json = {
 				name : "p10",
 				title : "Quanta dificuldade você tem no seu trabalho devido à mobilidade reduzida no quadril?",
 				isRequired : false,
-				visibleIf: "{unemployed}='Não'",
+				visibleIf: "{retired} empty and {unemployed} empty",
 				rateMin : 1,
 				rateMax : 10,
 				minRateDescription : "Muita dificuldade",
@@ -205,22 +203,21 @@ var json = {
 		"elements" : [
 			
 	        {
-	        	type: "radiogroup",
+	        	type: "checkbox",
 	            "name": "p11Boolean",
 	            "title": "Quanto sua atividade sexual é prejudicada por causa do seu quadril?",
-	            "description": "Isto é importante para mim.",
-	            "isRequired": true,
+	            "isRequired": false,
 	            choices: [
-	                "Sim", "Não"
+	            	"Isto não é importante para mim."
 	            ],
 		        colCount: 0
 	        },
 			{
 				type : "rating",
 				name : "p11",
-				title : "Quanto sua atividade sexual é prejudicada por causa do seu quadril?",
+				title : " ",
 				isRequired : false,
-				visibleIf: "{p11Boolean}='Sim'",
+				visibleIf: "{p11Boolean} empty",
 				rateMin : 1,
 				rateMax : 10,
 				minRateDescription : "Muito problema",
@@ -237,22 +234,21 @@ var json = {
 				maxRateDescription : "Não incomoda"
 			},
 			{
-				type: "radiogroup",
+				type: "checkbox",
 	            "name": "p13Boolean",
 	            "title": "Quanto você se preocupa em pegar ou carregar uma criança no colo por causa de seu problema no quadril?",
-	            "description": "Faço esse movimento em minhas atividades.",
-	            "isRequired": true,
+	            "isRequired": false,
 	            choices: [
-	                "Sim", "Não"
+	            	"Não faço esse movimento em minhas atividades."
 	            ],
 		        colCount: 0
 	        },
 			{
 				type : "rating",
 				name : "p13",
-				title : "Quanto você se preocupa em pegar ou carregar uma criança no colo por causa de seu problema no quadril?",
+				title : " ",
 				isRequired : false,
-				visibleIf: "{p13Boolean}='Sim'",
+				visibleIf: "{p13Boolean} empty",
 				rateMin : 1,
 				rateMax : 10,
 				minRateDescription : "Muito",

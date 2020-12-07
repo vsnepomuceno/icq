@@ -1,8 +1,10 @@
-package com.icq.model.entities;
+package com.icq.model.entities.survey;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.icq.model.entities.Survey;
 
 @Entity
 @Table(name = "surveyMHOT")
