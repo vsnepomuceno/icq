@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title> Enviar Survey para Paciente</title>
+</h:head>
+<h:body>
+	<h:form>		
+		<h3>Enviar Survey para Paciente.</h3>
+		
+		<h:panelGrid columns="2">
+			
+			<h:outputLabel for="email">E-Mail:</h:outputLabel>
+			<h:inputText id="email" value="#{registerPacienteMB.surveyEmail}" required="true"
+				requiredMessage="Por favor, digite seu e-mail!">
+			</h:inputText>
+			
+			
+			<h:commandButton action="#{registerPacienteMB.sendSurvey}" value="Enviar Survey"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+	<br />
+	<br />
+	<h:link value="I already have an account" outcome="signin" />
+</h:body>
+</html>

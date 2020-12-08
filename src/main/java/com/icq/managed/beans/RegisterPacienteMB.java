@@ -9,6 +9,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import com.icq.beans.PacientBean;
+import com.icq.beans.SurveyBean;
 import com.icq.model.entities.Pacient;
 
 @Named("registerPacienteMB")
@@ -18,10 +19,15 @@ public class RegisterPacienteMB implements Serializable {
 
 	@EJB
 	private PacientBean pacientBean;
+	
+	@EJB
+	private SurveyBean surveyBean;
 
 	private String name;
 	private String email;
 	private String fone;
+	
+	private String surveyEmail;
 
 	public String register() {
 		Pacient p = new Pacient();
@@ -38,6 +44,16 @@ public class RegisterPacienteMB implements Serializable {
 			e.printStackTrace();
 		}
 
+		return "login";
+	}
+	
+	public String sendSurvey() {
+		
+		Pacient p = pacientBean.findPacientByEmail(this.surveyEmail);
+		
+		if (p != null) {
+			surveyBean.sendSurvey(p);
+		}
 		return "login";
 	}
 
@@ -63,6 +79,14 @@ public class RegisterPacienteMB implements Serializable {
 
 	public void setFone(String fone) {
 		this.fone = fone;
+	}
+
+	public String getSurveyEmail() {
+		return surveyEmail;
+	}
+
+	public void setSurveyEmail(String surveyEmail) {
+		this.surveyEmail = surveyEmail;
 	}
 
 }

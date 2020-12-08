@@ -40,11 +40,20 @@ public class PacientBean implements Serializable{
      * @throws UnsupportedEncodingException if UTF-8 is not supported by the system
      * @throws NoSuchAlgorithmException if SHA-256 is not supported by the system
      */
-    public static String encodeSHA256(String value) 
+    private static String encodeSHA256(String value) 
             throws UnsupportedEncodingException, NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(value.getBytes("UTF-8"));
         byte[] digest = md.digest();
         return DatatypeConverter.printBase64Binary(digest).toString();
     }
+
+	public Pacient findPacientByEmail(String surveyEmail) {
+		Pacient pacient = null;
+		if (surveyEmail != null) {
+			pacient = pacientDAO.findByEmail(surveyEmail);
+		}
+		
+		return pacient;
+	}
 }
