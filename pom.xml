@@ -2,12 +2,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>TesteSurvey</groupId>
-	<artifactId>TesteSurvey</artifactId>
+	<groupId>icq</groupId>
+	<artifactId>icq</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>TesteSurvey Maven Webapp</name>
-	<url>http://maven.apache.org</url>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
 		<dependency>
@@ -82,9 +80,6 @@
 			<artifactId>google-api-services-gmail</artifactId>
 			<version>v1-rev110-1.25.0</version>
 		</dependency>
-
-
-
 	</dependencies>
 	<build>
 		<finalName>icq</finalName>

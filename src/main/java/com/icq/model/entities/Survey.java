@@ -1,6 +1,7 @@
 package com.icq.model.entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,6 +22,9 @@ public abstract class Survey implements Serializable{
 
 	@Column
 	protected String surveyName;
+	
+	@Column
+	private Date date;
 	
 	@OneToOne (cascade=CascadeType.ALL)
 	private Pacient pacient = new Pacient();
@@ -47,5 +51,13 @@ public abstract class Survey implements Serializable{
 
 	public void setPacient(Pacient pacient) {
 		this.pacient = pacient;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}	
 }

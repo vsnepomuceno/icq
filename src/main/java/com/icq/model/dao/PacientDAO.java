@@ -20,7 +20,29 @@ public class PacientDAO extends DAO<Pacient> {
 				+ "SELECT p FROM Pacient p WHERE p.email= :email", Pacient.class);
 		query.setParameter("email", surveyEmail);
 		
-		p = query.getSingleResult();
+		try
+		{
+			p = query.getSingleResult();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return p;
+	}
+	
+	public Pacient findByHash(String hash) {
+		Pacient p = null;
+		
+		TypedQuery<Pacient> query = this.entityManager.createQuery(""
+				+ "SELECT p FROM Pacient p WHERE p.hash= :hash", Pacient.class);
+		query.setParameter("hash", hash);
+		
+		try
+		{
+			p = query.getSingleResult();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 		
 		return p;
 	}

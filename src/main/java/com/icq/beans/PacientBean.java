@@ -6,8 +6,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.ejb.Stateless;
-import javax.xml.bind.DatatypeConverter;
 
+import com.google.api.client.util.Base64;
 import com.icq.model.dao.PacientDAO;
 import com.icq.model.entities.Pacient;
 
@@ -45,7 +45,7 @@ public class PacientBean implements Serializable{
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(value.getBytes("UTF-8"));
         byte[] digest = md.digest();
-        return DatatypeConverter.printBase64Binary(digest).toString();
+        return Base64.encodeBase64URLSafeString(digest).toString();
     }
 
 	public Pacient findPacientByEmail(String surveyEmail) {

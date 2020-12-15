@@ -8,25 +8,6 @@ var json = {
     "logoHeight": 60,
     showQuestionNumbers: "off",
 	"pages" : [ 
-		{
-		"name" : "Dados do Paciente",
-		"title" : "Dados do Paciente",
-		"elements" : [
-
-		{
-			type : "text",
-			name : "name",
-			title : "Nome Completo:"
-		}, {
-			type : "text",
-			name : "email",
-			title : "E-mail:"
-		}, {
-			type : "text",
-			name : "fone",
-			title : "Telefone:"
-		}]
-	},
 	{
 		"name" : "Sintomas e Limitações Funcionais",
 		"title" : "Sintomas e Limitações Funcionais",
@@ -112,7 +93,7 @@ var json = {
 			maxRateDescription : "Nenhuma Dor"
 		},
         {
-			type: "checkbox",
+			type: "radiogroup",
 	        name: "p8Boolean",
 	        "title": "Quanto você se preocupa em mudanças rapidas de direção nos seus esportes ou atividades recreativas?",
 	        isRequired: false,
@@ -141,7 +122,7 @@ var json = {
 		"elements" : [
 			
 	        {
-	        	type: "checkbox",
+	        	type: "radiogroup",
 		        name: "retired",
 		        "title": " ",
 		        isRequired: false,
@@ -151,7 +132,7 @@ var json = {
 		        colCount: 0
 	        },
 	        {
-	        	type: "checkbox",
+	        	type: "radiogroup",
 	            "name": "unemployed",
 	            "title": " ",
 	            visibleIf: "{retired} empty",
@@ -162,7 +143,7 @@ var json = {
 		        colCount: 0
 	        },
 	        {
-	        	type: "checkbox",
+	        	type: "radiogroup",
 	            "name": "p9Boolean",
 	            "title": "Qual é sua dificuldade para empurrar, puxar, levantar ou carregar objetos pesados em seu trabalho?",
 	            visibleIf: "{retired} empty and {unemployed} empty",
@@ -203,7 +184,7 @@ var json = {
 		"elements" : [
 			
 	        {
-	        	type: "checkbox",
+	        	type: "radiogroup",
 	            "name": "p11Boolean",
 	            "title": "Quanto sua atividade sexual é prejudicada por causa do seu quadril?",
 	            "isRequired": false,
@@ -234,7 +215,7 @@ var json = {
 				maxRateDescription : "Não incomoda"
 			},
 			{
-				type: "checkbox",
+				type: "radiogroup",
 	            "name": "p13Boolean",
 	            "title": "Quanto você se preocupa em pegar ou carregar uma criança no colo por causa de seu problema no quadril?",
 	            "isRequired": false,
@@ -274,8 +255,15 @@ window.survey = new Survey.Model(json);
 survey.onComplete.add(function(result) {
 
 	var getUrl = window.location;
+	
+	var url = new URL(getUrl);
+	var hash = url.searchParams.get("hash");
+	
 	var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-	var urlDados = baseUrl+'/rest/survey/mhot';
+	var urlDados = baseUrl+'/rest/survey/mhot/'+hash;
+	
+	
+	
 	$.ajax({
 		type : 'POST',
 		url : urlDados,
@@ -286,14 +274,9 @@ survey.onComplete.add(function(result) {
 		contentType : "application/json",
 		dataType : 'json'
 	});
-    alert(urlDados); 
+    alert(JSON.stringify(result.data, null, 3)); 
+    alert(urlDados);
 });
-
-survey.data = {
-	name : 'João da Silva',
-	email : 'joao@host.com',
-	fone : '(XX)XXXXXXXXX'
-};
 
 $("#surveyElement").Survey({
 	model : survey

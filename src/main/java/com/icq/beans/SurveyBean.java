@@ -62,15 +62,17 @@ public class SurveyBean implements Serializable {
 			MimeMessage mimeMessage = new MimeMessage(Session.getDefaultInstance(new Properties()));
 			mimeMessage.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(p.getEmail()));
 			mimeMessage.setSubject("Questionário de Bem Estar para pacientes do ICQ.");
-			mimeMessage.setText("Testando Email");
+			mimeMessage.setContent("Olá " + p.getName() + "Nós gostariamos de saber um pouco mais sobre o seu processo de recuperação.<br/><br/>"
+					+ "por favor, responder o questionário no link abaixo:<br/><br/>"
+					+ "<a href=\"http://localhost:8080/icq/index.xhtml?hash="+p.getHash()
+					+"\">Responder Questionário</a><br/><br/>"
+					+ "Desde já, agradecemos pelo retorno.", "text/html; charset=utf-8");
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			mimeMessage.writeTo(baos);
 			Message message = new Message();
 			message.setRaw(Base64.encodeBase64URLSafeString(baos.toByteArray()));
 
-			
-			
 			service.users().messages().send(user, message).execute();
 
 		} catch (IOException e) {

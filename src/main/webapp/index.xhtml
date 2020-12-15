@@ -5,7 +5,15 @@
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"/>
 	    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-
+<script>
+function goSurvey() {
+	var getUrl = window.location;
+	
+	var url = new URL(getUrl);
+	var hash = url.searchParams.get("hash");
+	window.location.href = "./survey.xhtml?hash="+hash;
+}
+</script>
     </head>
 	<body id="survey" class="font-weight-light">
 	    <div class="container tm-container-max-800">
@@ -49,7 +57,7 @@ Considere o último mês. As questões são formatadas de forma que você possa 
 						</p>
 	                </header>
 	<p align="center">
-	       		<a  class="btn btn-primary" href="./survey.xhtml">Responder Survey</a>
+	       		<a  class="btn btn-primary" onclick="goSurvey()">Responder Survey</a>
 	       		<a  class="btn btn-primary" href="./faces/charts.xhtml">Ver Gráficos</a>
 	</p>
 				</div>
